@@ -1,4 +1,4 @@
-% 3D RRT with Adaptive Energy Cost & Height-biased Sampling
+
 % 特性：标准RRT + 自适应爬升惩罚(相对目标高度) + 高度偏置采样 + 膨胀障碍物 + 迭代剪枝 + B样条平滑
 clear; close all; clc;
 
