@@ -100,7 +100,7 @@ traj_mixed_turn = evaluate_trajectory_derivative(coeffs_mixed_turn, N, T_turn, t
 
 dim = size(waypoints, 2);
 
-figure('Name', '图1：最小SNAP 与 最小SNAP+最小JERK结合对比');
+figure('Name', '最小SNAP 与 最小SNAP+最小JERK结合对比');
 hold on; grid on; axis equal;
 if dim >= 3
     view(3);
@@ -125,7 +125,7 @@ else
     xlabel('X'); ylabel('Y');
 end
 legend('Location', 'best');
-title('图1：相同参考点下最小SNAP与最小SNAP+最小JERK结合轨迹对比');
+title('相同参考点下最小SNAP与最小SNAP+最小JERK结合轨迹对比');
 hold off;
 
 %% ==================== 图2：平均时间分配 与 梯形+拐角时间分配对比 ====================
@@ -134,7 +134,7 @@ ts_fixed = linspace(0, sum(T_fixed), 500);
 traj_mixed_fixed = evaluate_trajectory_derivative(coeffs_mixed_fixed, N, T_fixed, ts_fixed, 0);
 traj_mixed_turn  = evaluate_trajectory_derivative(coeffs_mixed_turn,  N, T_turn,  ts_turn,  0);
 
-figure('Name', '图2：平均时间分配 与 梯形+拐角时间分配对比');
+figure('Name', '平均时间分配 与 梯形+拐角时间分配对比');
 hold on; grid on; axis equal;
 if dim >= 3
     view(3);
@@ -143,9 +143,9 @@ if dim >= 3
     plot3(waypoints(:,1), waypoints(:,2), waypoints(:,3), ...
         'ro', 'MarkerSize', 4, 'MarkerFaceColor', 'r', 'DisplayName', '插值参考点');
     plot3(traj_mixed_fixed(:,1), traj_mixed_fixed(:,2), traj_mixed_fixed(:,3), ...
-        'b-', 'LineWidth', 1.5, 'DisplayName', '平均时间分配-混合优化');
+        'b-', 'LineWidth', 1.5, 'DisplayName', '平均时间分配');
     plot3(traj_mixed_turn(:,1), traj_mixed_turn(:,2), traj_mixed_turn(:,3), ...
-        'r--', 'LineWidth', 1.5, 'DisplayName', '梯形+拐角时间分配-混合优化');
+        'r--', 'LineWidth', 1.5, 'DisplayName', '梯形+拐角时间分配');
     xlabel('X'); ylabel('Y'); zlabel('Z');
 else
     plot(waypoints_original(:,1), waypoints_original(:,2), ...
@@ -153,13 +153,13 @@ else
     plot(waypoints(:,1), waypoints(:,2), ...
         'ro', 'MarkerSize', 4, 'MarkerFaceColor', 'r', 'DisplayName', '插值参考点');
     plot(traj_mixed_fixed(:,1), traj_mixed_fixed(:,2), ...
-        'b-', 'LineWidth', 1.5, 'DisplayName', '平均时间分配-混合优化');
+        'b-', 'LineWidth', 1.5, 'DisplayName', '平均时间分配');
     plot(traj_mixed_turn(:,1), traj_mixed_turn(:,2), ...
-        'r--', 'LineWidth', 1.5, 'DisplayName', '梯形+拐角时间分配-混合优化');
+        'r--', 'LineWidth', 1.5, 'DisplayName', '梯形+拐角时间分配');
     xlabel('X'); ylabel('Y');
 end
 legend('Location', 'best');
-title('图2：平均时间分配与梯形+拐角时间分配轨迹对比（混合优化）');
+title('平均时间分配与梯形+拐角时间分配轨迹对比');
 hold off;
 
 %% ==================== 新增：不同策略的动态曲线对比 ====================
@@ -188,7 +188,7 @@ direction_names = {'X', 'Y', 'Z'};
 deriv_names = {'位置', '速度', '加速度', 'Jerk', 'Snap'};
 
 %% 图3：优化目标对比（最小SNAP vs 混合）各阶导数曲线
-figure('Name', '图3：优化目标对比（最小SNAP vs 混合）');
+figure('Name', '优化目标对比（最小SNAP vs 混合）');
 for d = 1:min(dim,2)  % 只处理X和Y方向（2D路径）
     dir_name = direction_names{d};
     for r = 1:5
@@ -204,10 +204,10 @@ for d = 1:min(dim,2)  % 只处理X和Y方向（2D路径）
         end
     end
 end
-sgtitle('图3：优化目标对比（转向角时间分配下）');
+sgtitle('优化目标对比');
 
 %% 图4：时间分配对比（平均 vs 梯形+拐角）各阶导数曲线
-figure('Name', '图4：时间分配对比（平均 vs 梯形+拐角）');
+figure('Name', '时间分配对比（平均 vs 梯形+拐角）');
 for d = 1:min(dim,2)
     dir_name = direction_names{d};
     for r = 1:5
@@ -223,7 +223,7 @@ for d = 1:min(dim,2)
         end
     end
 end
-sgtitle('图4：时间分配对比（混合优化下）');
+sgtitle('时间分配对比');
 
 %% ==================== 局部函数 ====================
 
